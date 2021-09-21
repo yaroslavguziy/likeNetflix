@@ -6,29 +6,30 @@ import {
 } from 'firebase/auth';
 
 import app from 'db/app';
+import { USER_KEY, queryClient } from 'constants/query';
 
 const auth = getAuth(app);
 
 export const signUp = ({ email, password }) =>
   createUserWithEmailAndPassword(auth, email, password)
-    .then(userCredential => {
-      console.log(userCredential);
-      const user = userCredential.user;
+    .then(({ user }) => {
+      console.log(user);
+      const { displayName, email, phoneNumber, photoURL, uid } = user;
+      queryClient.setQueryData(USER_KEY, () => ({ displayName, email, phoneNumber, photoURL, uid }));
     })
     .catch(error => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      // ..
+      console.log(error);
     });
 
 export const signIn = ({ email, password }) =>
   signInWithEmailAndPassword(auth, email, password)
-    .then(userCredential => {
-      const user = userCredential.user;
+    .then(({ user }) => {
+      console.log(user);
+      const { displayName, email, phoneNumber, photoURL, uid } = user;
+      queryClient.setQueryData(USER_KEY, () => ({ displayName, email, phoneNumber, photoURL, uid }));
     })
     .catch(error => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
+      console.log(error);
     });
 
 export const signOut = signOutFirebase(auth)
