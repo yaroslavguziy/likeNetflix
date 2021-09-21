@@ -3,6 +3,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut as signOutFirebase,
+  onAuthStateChanged as onAuthStateChangedFirebase,
 } from 'firebase/auth';
 
 import app from 'db/app';
@@ -32,6 +33,18 @@ export const signIn = ({ email, password }) =>
       console.log(error);
     });
 
-export const signOut = signOutFirebase(auth)
-  .then(() => {})
-  .catch(error => {});
+export const signOut = () =>
+  signOutFirebase(auth)
+    .then(() => {})
+    .catch(error => {});
+
+export const onAuthStateChanged = callback =>
+  onAuthStateChangedFirebase(auth, user => {
+    if (user) {
+      const { displayName, email, phoneNumber, photoURL, uid } = user;
+      queryClient.setQueryData(USER_KEY, () => ({ displayName, email, phoneNumber, photoURL, uid }));
+      callback();
+    } else {
+      signOut();
+    }
+  });
