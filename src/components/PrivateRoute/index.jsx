@@ -6,7 +6,7 @@ import { routes } from 'constants/routes';
 
 export const PrivateRoute = ({ children, ...rest }) => {
   const user = useUser();
-  console.log(user);
+
   return (
     <Route
       {...rest}
@@ -16,7 +16,7 @@ export const PrivateRoute = ({ children, ...rest }) => {
         ) : (
           <Redirect
             to={{
-              pathname: routes.login,
+              pathname: routes.registration,
               state: { from: location },
             }}
           />

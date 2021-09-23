@@ -9,7 +9,7 @@ export const SignIn = () => {
   const { register, handleSubmit } = useForm();
 
   return (
-    <>
+    <div className="w-100" style={{ maxWidth: '400px' }}>
       <Card>
         <Card.Body>
           <h2 className="text-center mb-4">Sign In</h2>
@@ -39,8 +39,8 @@ export const SignIn = () => {
         </Card.Body>
       </Card>
       <div className="w-100 text-center mt-2">
-        Don't have an account? <Link to={routes.home}>Sign up</Link>
+        Don't have an account? <Link to={routes.registration}>Sign up</Link>
       </div>
-    </>
+    </div>
   );
 };
