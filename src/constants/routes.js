@@ -1,6 +1,8 @@
 export const routes = {
   login: '/login',
+  registration: '/registration',
   home: '/',
   private: '/private',
-  registration: '/registration',
+  shows: '/private/shows',
+  profile: '/private/profile',
 };

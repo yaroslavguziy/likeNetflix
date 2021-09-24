@@ -1,11 +1,11 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 
-import { useUser } from 'hooks/user';
+import { useAuth } from 'hooks/auth';
 import { routes } from 'constants/routes';
 
 export const PrivateRoute = ({ children, ...rest }) => {
-  const user = useUser();
+  const { user } = useAuth();
 
   return (
     <Route

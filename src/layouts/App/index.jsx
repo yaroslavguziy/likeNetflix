@@ -7,6 +7,7 @@ import { Home } from 'layouts/Home';
 import { Login } from 'layouts/Login';
 import { Registration } from 'layouts/Registration';
 import { Shows } from 'layouts/Shows';
+import { Profile } from 'layouts/Profile';
 
 import { PrivateRoute } from 'components/PrivateRoute';
 import { AppWrapper } from 'components/AppWrapper';
@@ -21,8 +22,8 @@ import './styles.scss';
 export const App = () => (
   <StrictMode>
     <QueryClientProvider client={queryClient}>
-      <AppWrapper>
-        <BrowserRouter>
+      <BrowserRouter>
+        <AppWrapper>
           <Header />
           <Switch>
             <Route exact path={routes.home}>
@@ -34,12 +35,15 @@ export const App = () => (
             <Route exact path={routes.registration}>
               <Registration />
             </Route>
-            <PrivateRoute exact path={routes.private}>
+            <PrivateRoute exact path={routes.shows}>
               <Shows />
             </PrivateRoute>
+            <PrivateRoute exact path={routes.profile}>
+              <Profile />
+            </PrivateRoute>
           </Switch>
-        </BrowserRouter>
-      </AppWrapper>
+        </AppWrapper>
+      </BrowserRouter>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   </StrictMode>

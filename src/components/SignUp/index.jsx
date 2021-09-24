@@ -2,11 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Form, Button, Card } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
-import { signUp } from 'db/auth.js';
+import { useAuth } from 'hooks/auth.js';
 import { routes } from 'constants/routes';
 
 export const SignUp = () => {
   const { register, handleSubmit } = useForm();
+  const { signUp } = useAuth();
 
   return (
     <div className="w-100" style={{ maxWidth: '400px' }}>
