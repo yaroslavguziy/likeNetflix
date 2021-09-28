@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 import { routes } from 'constants/routes';
 import { useAuth } from 'hooks/auth';
+import { Search } from 'components/Search';
 
 export const Header = () => {
   const { user, signOut } = useAuth();
@@ -14,9 +15,10 @@ export const Header = () => {
         <div>
           <span className="header-logo fs-3">Like Netflix</span>
         </div>
-        <div>
+        <div className="d-flex header-left">
+          {user && <Search />}
           {user ? (
-            <Button onClick={signOut} type="button" className="bnt btn-danger fw-bold ">
+            <Button onClick={signOut} type="button" className="bnt btn-danger fw-bold px-1 w-50">
               Sign Out
             </Button>
           ) : (

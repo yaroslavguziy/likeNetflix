@@ -8,6 +8,8 @@ import { Login } from 'layouts/Login';
 import { Registration } from 'layouts/Registration';
 import { Shows } from 'layouts/Shows';
 import { Profile } from 'layouts/Profile';
+import { Show } from 'layouts/Show';
+import { ProfileUpdate } from 'layouts/ProfileUpdate';
 
 import { PrivateRoute } from 'components/PrivateRoute';
 import { AppWrapper } from 'components/AppWrapper';
@@ -40,6 +42,12 @@ export const App = () => (
             </PrivateRoute>
             <PrivateRoute exact path={routes.profile}>
               <Profile />
+            </PrivateRoute>
+            <PrivateRoute exact path={routes.show}>
+              <Show />
+            </PrivateRoute>
+            <PrivateRoute exact path={routes.updateProfile}>
+              <ProfileUpdate />
             </PrivateRoute>
           </Switch>
         </AppWrapper>

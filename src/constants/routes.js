@@ -2,7 +2,8 @@ export const routes = {
   login: '/login',
   registration: '/registration',
   home: '/',
-  private: '/private',
-  shows: '/private/shows',
-  profile: '/private/profile',
+  shows: '/shows',
+  profile: '/profile',
+  show: '/shows/:id',
+  updateProfile: '/updateProfile',
 };

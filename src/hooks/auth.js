@@ -6,17 +6,20 @@ import {
   signInWithEmailAndPassword,
   signOut as signOutFirebase,
   onAuthStateChanged,
+  updateEmail,
+  updatePassword,
 } from 'firebase/auth';
 
 import { auth } from 'db/auth';
 import { routes } from 'constants/routes';
 import { USER_KEY } from 'constants/query';
+import { useUser } from './user';
 
 export const useAuth = () => {
   const [isLoading, setIsLoading] = useState(true);
   const { replace } = useHistory();
   const queryClient = useQueryClient();
-  let user = queryClient.getQueryData(USER_KEY);
+  const { data: user } = useUser();
 
   const signUp = ({ email, password }) =>
     createUserWithEmailAndPassword(auth, email, password)
@@ -50,6 +53,21 @@ export const useAuth = () => {
         console.log(error);
       });
 
+  updatePassword(user)
+    .then(() => {
+      replace(routes.profile);
+    })
+    .catch(error => {
+      // An error ocurred
+      // ...
+    });
+
+  updateEmail(user)
+    .then(() => {
+      replace(routes.profile);
+    })
+    .catch(error => {});
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, user => {
       if (user) {
@@ -58,9 +76,8 @@ export const useAuth = () => {
       }
       setIsLoading(false);
     });
-
     return unsubscribe;
-  }, [queryClient]);
+  }, []);
 
-  return { isLoading, signUp, user, signOut, signIn };
+  return { isLoading, signUp, user, signOut, signIn, updatePassword, updateEmail };
 };
