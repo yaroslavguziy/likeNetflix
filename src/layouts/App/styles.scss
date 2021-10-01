@@ -12,17 +12,11 @@
   font-size: 25px;
 }
 
-.movie-item {
-  width: 15%;
-  height: 500px;
-}
-
 .shows-card {
   cursor: pointer;
 }
 
-.header-left {
-  width: 250px;
+.header-right {
   position: relative;
 }
 
@@ -90,7 +84,6 @@
       width: 80px;
     }
     &-left {
-      justify-content: flex-end;
       width: max-content;
     }
     .search-input {
@@ -101,8 +94,8 @@
 
 @media (max-width: 425px) {
   .header {
-    &-right {
-      display: none;
+    &-logo {
+      font-size: 18px;
     }
   }
 }

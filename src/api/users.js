@@ -29,7 +29,8 @@ export const postUsersFavoritesData = async id => {
 
     await set(ref(db, 'favorites/' + auth.currentUser.uid), favorites);
 
-    await queryClient.refetchQueries([KEY, '/shows'], { active: true });
+    await queryClient.refetchQueries(KEY, { active: true });
+    await queryClient.refetchQueries([KEY, { id }], { active: true });
   } catch (error) {
     console.error(error);
   }
@@ -65,7 +66,8 @@ export const postUsersLikesData = async id => {
 
     await set(ref(db, 'likes/' + id), likes);
 
-    await queryClient.refetchQueries([KEY, '/shows'], { active: true });
+    await queryClient.refetchQueries(KEY, { active: true });
+    await queryClient.refetchQueries([KEY, { id }], { active: true });
   } catch (error) {
     console.error(error);
   }

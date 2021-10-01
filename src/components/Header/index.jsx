@@ -12,7 +12,7 @@ export const Header = () => {
   return (
     <div className="header">
       <Container fluid className="d-flex align-items-center justify-content-between p-2">
-        <div className="header-right">
+        <div className="header-left">
           <span className="header-logo ">Netflix</span>
         </div>
         {user ? (
@@ -23,22 +23,18 @@ export const Header = () => {
             <Link className="header-link nav-link fw-bold " to={routes.shows}>
               Shows
             </Link>
-            <NavDropdown className="mobile-menu" title="Menu" id="collasible-nav-dropdown">
-              <NavDropdown.Item>
-                <Link className="mobile-link nav-link fw-bold " to={routes.profile}>
-                  Profile
-                </Link>
-              </NavDropdown.Item>
-              <NavDropdown.Item>
-                <Link className="mobile-link nav-link fw-bold " to={routes.shows}>
-                  Shows
-                </Link>
-              </NavDropdown.Item>
+            <NavDropdown className="mobile-menu" title="" id="collasible-nav-dropdown">
+              <Link className="mobile-link nav-link fw-bold " to={routes.profile}>
+                Profile
+              </Link>
+              <Link className="mobile-link nav-link fw-bold " to={routes.shows}>
+                Shows
+              </Link>
             </NavDropdown>
           </Nav>
         ) : null}
 
-        <div className="d-flex header-left">
+        <div className="d-flex header-right">
           {user && <Search />}
           {user ? (
             <Button onClick={signOut} type="button" className=" btn-signout btn-danger fw-bold px-1 w-50">

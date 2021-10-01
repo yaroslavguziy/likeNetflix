@@ -47,7 +47,7 @@ export const Card = ({ entity, width, height, isShowOverview, search }) => {
           <div className="d-flex align-items-center justify-content-between">
             <span className="fw-bold text-dark">Likes: {entity?.likeCount}</span>
             <Button variant="danger" onClick={handleLike}>
-              {entity?.likeCount ? 'Like' : 'Dislike'}
+              {entity?.isLiked ? 'Dislike' : 'Like'}
             </Button>
           </div>
         )}

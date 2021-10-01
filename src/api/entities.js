@@ -1,6 +1,8 @@
 import { tvMazeApi } from 'utils/api';
 import { getUsersFavoritesData, getUsersLikesData } from 'api/users';
 
+import { auth } from 'db/auth';
+
 export const getEntitiesAPI = async () => {
   const { data } = await tvMazeApi.get('/shows');
 
@@ -10,6 +12,7 @@ export const getEntitiesAPI = async () => {
   const response = data.map(entity => ({
     ...entity,
     isFavorite: favorites.includes(entity.id),
+    isLiked: likes[entity.id]?.includes(auth.currentUser.uid),
     likeCount: likes[entity.id]?.length || 0,
   }));
 
@@ -25,8 +28,9 @@ export const getEntityAPI = async ({ queryKey }) => {
 
   const entity = {
     ...data,
-    isFavorite: favorites.includes(data.id),
-    likeCount: likes[data.id]?.length || 0,
+    isFavorite: favorites.includes(+id),
+    isLiked: likes[id]?.includes(auth.currentUser.uid),
+    likeCount: likes[id]?.length || 0,
   };
 
   return entity;
