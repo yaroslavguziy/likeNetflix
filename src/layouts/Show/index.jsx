@@ -12,7 +12,7 @@ export const Show = () => {
 
   return (
     <Container className="mt-4">
-      <Card entity={entity} isShowOverview />
+      <Card height="800px" entity={entity} isShowOverview />
     </Container>
   );
 };

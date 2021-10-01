@@ -1,7 +1,8 @@
 import { useQuery } from 'react-query';
+
 import { getEntitiesAPI, getEntityAPI, getSearchEntitiesAPI } from 'api/entities';
 
-const KEY = 'entities';
+export const KEY = 'entities';
 
 export const useEntities = () => useQuery([KEY, '/shows'], getEntitiesAPI);
 

@@ -9,6 +9,7 @@
 .header-logo {
   color: red;
   font-weight: bold;
+  font-size: 25px;
 }
 
 .movie-item {
@@ -41,11 +42,67 @@
 
 .search-item {
   display: block;
-  padding: 10px 10px;
+  padding: 10px;
   background-color: #fff;
   transition: all 0.5s ease-in-out;
 
   &:hover {
-    background-color: red;
+    background-color: #dc3545;
+  }
+}
+
+.header {
+  .header-link {
+    text-decoration: none;
+    color: #dc3545;
+    transition: all 0.5s ease-in-out;
+    &:hover {
+      background-color: #dc3545;
+      color: #fff;
+    }
+  }
+  .mobile-menu {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .header-link {
+    display: none;
+  }
+  .header {
+    .mobile-menu {
+      display: block;
+
+      .nav-link {
+        color: #dc3545;
+        font-weight: bold;
+        padding: 0 5px;
+      }
+    }
+    .input-group {
+      width: 120px;
+    }
+    .search-dropdown {
+      width: 115px;
+    }
+    .btn-signout {
+      width: 80px;
+    }
+    &-left {
+      justify-content: flex-end;
+      width: max-content;
+    }
+    .search-input {
+      padding: 5px;
+    }
+  }
+}
+
+@media (max-width: 425px) {
+  .header {
+    &-right {
+      display: none;
+    }
   }
 }

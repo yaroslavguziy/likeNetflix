@@ -3,7 +3,7 @@ import { Dropdown } from 'react-bootstrap';
 
 export const FilterDropdown = ({ value, values, handleClick, name }) => {
   return (
-    <Dropdown value={value} className="my-5">
+    <Dropdown value={value} className="mt-4">
       <Dropdown.Toggle id="dropdown-button-dark-example1" variant="secondary">
         {`Filtered by ${name}: ${value ? value : 'all'} `}
       </Dropdown.Toggle>

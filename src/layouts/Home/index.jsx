@@ -12,7 +12,7 @@ export const Home = () => {
     <Container className="d-flex align-items-center justify-content-center" style={{ minHeight: '100vh' }}>
       <Link
         className="started-link bnt btn-danger w-100 py-3 fw-bold fs-4 text-center"
-        to={user ? routes.shows : routes.registration}
+        to={user ? routes.profile : routes.registration}
       >
         Get Started
       </Link>

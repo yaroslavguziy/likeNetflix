@@ -8,6 +8,7 @@ const {
   REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
   REACT_APP_FIREBASE_APP_ID,
   REACT_APP_FIREBASE_MEASUREMENT_ID,
+  REACT_APP_FIREBASE_DATABASE_URL,
 } = process.env;
 
 const app = initializeApp({
@@ -18,6 +19,7 @@ const app = initializeApp({
   messagingSenderId: REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
   appId: REACT_APP_FIREBASE_APP_ID,
   measurementId: REACT_APP_FIREBASE_MEASUREMENT_ID,
+  databaseURL: REACT_APP_FIREBASE_DATABASE_URL,
 });
 
 export default app;

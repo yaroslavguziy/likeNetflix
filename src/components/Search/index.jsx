@@ -11,7 +11,7 @@ export const Search = () => {
     query,
     queryOptions: { enabled: query?.length > 2 },
   });
-  const list = useMemo(() => data?.slice(0, 4), [data]);
+  const list = useMemo(() => data, [data]);
 
   const handleChange = ({ target }) => setQuery(target.value);
 
@@ -19,12 +19,18 @@ export const Search = () => {
 
   return (
     <InputGroup className="me-2">
-      <FormControl className onChange={handleChange} value={query} placeholder="search" aria-label="search" />
+      <FormControl
+        className="search-input"
+        onChange={handleChange}
+        value={query}
+        placeholder="search"
+        aria-label="search"
+      />
       {query?.length > 2 ? (
         <ul className="search-dropdown">
           {list?.map(({ show }) => (
             <li className="search-item" key={show.id}>
-              <Card height="150px" search entity={show} handleClick={handleClick} />
+              <Card height="130px" search entity={show} handleClick={handleClick} />
             </li>
           ))}
         </ul>
